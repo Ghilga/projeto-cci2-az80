@@ -4,7 +4,7 @@ Projeto do processador A-Z80 feito para a disciplina de Concepção de Circuitos
 
 Baseado no projeto original: [A-Z80](https://github.com/gdevic/A-Z80)
 
-## Como executar o Genus (Sítese Lógica):
+## Como executar o Genus (Síntese Lógica):
 
 **OBS:** De preferencia, rodar o genus na pasta synthesis, pois ele vai criar varios logs, então é melhor rodar dentro desta pasta para não encher de logs em outros lugares
 
