@@ -2,7 +2,7 @@
 #
 # Genus(TM) Synthesis Solution setup file
 # Created by Genus(TM) Synthesis Solution GENUS15.22 - 15.20-s024_1
-#   on 04/04/2022 21:59:38
+#   on 04/11/2022 23:06:00
 #
 # This file can only be run in Genus Common UI mode.
 #
@@ -44,8 +44,8 @@ set _slk_ [::legacy::get_attribute slack design:z80_top_direct_n]
 if {[regexp {^-?[0-9.]+$} $_slk_]} {
   set _slk_ [format %.1f $_slk_]
 }
-if {$_slk_ != "-5734.1"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden slack: -5734.1,  current slack: $_slk_"
+if {$_slk_ != "-1535.1"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden slack: -1535.1,  current slack: $_slk_"
 }
 unset _slk_
 # multi-mode slack
@@ -54,8 +54,8 @@ set _tns_ [::legacy::get_attribute tns design:z80_top_direct_n]
 if {[regexp {^-?[0-9.]+$} $_tns_]} {
   set _tns_ [format %.0f $_tns_]
 }
-if {$_tns_ != "586966"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden tns: 586966,  current tns: $_tns_"
+if {$_tns_ != "21230"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden tns: 21230,  current tns: $_tns_"
 }
 unset _tns_
 # cell area
@@ -63,8 +63,8 @@ set _cell_area_ [::legacy::get_attribute cell_area design:z80_top_direct_n]
 if {[regexp {^-?[0-9.]+$} $_cell_area_]} {
   set _cell_area_ [format %.0f $_cell_area_]
 }
-if {$_cell_area_ != "95319"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden cell area: 95319,  current cell area: $_cell_area_"
+if {$_cell_area_ != "94799"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden cell area: 94799,  current cell area: $_cell_area_"
 }
 unset _cell_area_
 # net area
@@ -72,7 +72,7 @@ set _net_area_ [::legacy::get_attribute net_area design:z80_top_direct_n]
 if {[regexp {^-?[0-9.]+$} $_net_area_]} {
   set _net_area_ [format %.0f $_net_area_]
 }
-if {$_net_area_ != "49880"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden net area: 49880,  current net area: $_net_area_"
+if {$_net_area_ != "49315"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden net area: 49315,  current net area: $_net_area_"
 }
 unset _net_area_

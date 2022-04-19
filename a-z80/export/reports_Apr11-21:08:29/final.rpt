@@ -1,0 +1,46 @@
+
+
+Working Directory = /home/inf01185/leonardo.augusto/Downloads/projeto-cci2-az80/a-z80/export
+QoS Summary for z80_top_direct_n
+========================================================================================
+Metric                  generic    map        syn_opt    syn_opt_low_incr final     
+========================================================================================
+Slack (ps):              -2670.5    -1519.1        0.0        0.0        0.0
+  R2R (ps):              -2670.5    -1519.1        0.0        0.0        0.0
+  I2R (ps):               7471.9     7158.8     7009.7     7009.7     7009.7
+  R2O (ps):             no_value   no_value   no_value   no_value   no_value
+  I2O (ps):             no_value   no_value   no_value   no_value   no_value
+  CG  (ps):               5381.7     3424.6     4072.8     4072.8     4072.8
+TNS (ps):                  55549      10010          0          0          0
+  R2R (ps):              55549.0    10010.0        0.0        0.0        0.0
+  I2R (ps):                  0.0        0.0        0.0        0.0        0.0
+  R2O (ps):             no_value   no_value   no_value   no_value   no_value
+  I2O (ps):             no_value   no_value   no_value   no_value   no_value
+  CG  (ps):                  0.0        0.0        0.0        0.0        0.0
+Failing Paths:                39         14          0          0          0
+Area:                        898      70281      73118      73094      73094
+Instances:                  6065       3568       3424       3422       3422
+Utilization (%):            0.00       0.00       0.00       0.00       0.00
+Tot. Net Length (um):   no_value   no_value   no_value   no_value   no_value
+Avg. Net Length (um):   no_value   no_value   no_value   no_value   no_value
+Total Overflow H:              0          0          0          0          0
+Total Overflow V:              0          0          0          0          0
+Route Overflow H (%):   no_value   no_value   no_value   no_value   no_value
+Route Overflow V (%):   no_value   no_value   no_value   no_value   no_value
+========================================================================================
+CPU  Runtime (m:s):        00:30      04:57      00:44      00:02      00:06
+Real Runtime (m:s):        05:49      02:28      00:51      00:08      00:11
+CPU  Elapsed (m:s):        00:40      05:37      06:21      06:23      06:29
+Real Elapsed (m:s):        05:51      08:19      09:10      09:18      09:29
+Memory (MB):              629.55     665.20     667.20     667.20     667.20
+========================================================================================
+
+========================================================================================
+Flow Settings:
+========================================================================================
+Total Runtime (m:s): 09:33
+Total Memory (MB):   667.20
+Executable Version:  15.22
+========================================================================================
+
+

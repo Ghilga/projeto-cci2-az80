@@ -1,0 +1,2508 @@
+# ####################################################################
+
+#  Created by Genus(TM) Synthesis Solution GENUS15.22 - 15.20-s024_1 on Mon Apr 11 20:08:44 -0400 2022
+
+# ####################################################################
+
+set sdc_version 1.7
+
+set_units -capacitance 1000.0fF
+set_units -time 1000.0ps
+
+# Set the current design
+current_design z80_top_direct_n
+
+create_clock -name "CLK" -add -period 55.0 -waveform {0.0 27.5} [get_ports CLK]
+set_load -pin_load -min 0.0014 [get_ports nM1]
+set_load -pin_load -max 0.32 [get_ports nM1]
+set_load -pin_load -min 0.0014 [get_ports nMREQ]
+set_load -pin_load -max 0.32 [get_ports nMREQ]
+set_load -pin_load -min 0.0014 [get_ports nIORQ]
+set_load -pin_load -max 0.32 [get_ports nIORQ]
+set_load -pin_load -min 0.0014 [get_ports nRD]
+set_load -pin_load -max 0.32 [get_ports nRD]
+set_load -pin_load -min 0.0014 [get_ports nWR]
+set_load -pin_load -max 0.32 [get_ports nWR]
+set_load -pin_load -min 0.0014 [get_ports nRFSH]
+set_load -pin_load -max 0.32 [get_ports nRFSH]
+set_load -pin_load -min 0.0014 [get_ports nHALT]
+set_load -pin_load -max 0.32 [get_ports nHALT]
+set_load -pin_load -min 0.0014 [get_ports nBUSACK]
+set_load -pin_load -max 0.32 [get_ports nBUSACK]
+set_load -pin_load -min 0.0014 [get_ports {A[15]}]
+set_load -pin_load -max 0.32 [get_ports {A[15]}]
+set_load -pin_load -min 0.0014 [get_ports {A[14]}]
+set_load -pin_load -max 0.32 [get_ports {A[14]}]
+set_load -pin_load -min 0.0014 [get_ports {A[13]}]
+set_load -pin_load -max 0.32 [get_ports {A[13]}]
+set_load -pin_load -min 0.0014 [get_ports {A[12]}]
+set_load -pin_load -max 0.32 [get_ports {A[12]}]
+set_load -pin_load -min 0.0014 [get_ports {A[11]}]
+set_load -pin_load -max 0.32 [get_ports {A[11]}]
+set_load -pin_load -min 0.0014 [get_ports {A[10]}]
+set_load -pin_load -max 0.32 [get_ports {A[10]}]
+set_load -pin_load -min 0.0014 [get_ports {A[9]}]
+set_load -pin_load -max 0.32 [get_ports {A[9]}]
+set_load -pin_load -min 0.0014 [get_ports {A[8]}]
+set_load -pin_load -max 0.32 [get_ports {A[8]}]
+set_load -pin_load -min 0.0014 [get_ports {A[7]}]
+set_load -pin_load -max 0.32 [get_ports {A[7]}]
+set_load -pin_load -min 0.0014 [get_ports {A[6]}]
+set_load -pin_load -max 0.32 [get_ports {A[6]}]
+set_load -pin_load -min 0.0014 [get_ports {A[5]}]
+set_load -pin_load -max 0.32 [get_ports {A[5]}]
+set_load -pin_load -min 0.0014 [get_ports {A[4]}]
+set_load -pin_load -max 0.32 [get_ports {A[4]}]
+set_load -pin_load -min 0.0014 [get_ports {A[3]}]
+set_load -pin_load -max 0.32 [get_ports {A[3]}]
+set_load -pin_load -min 0.0014 [get_ports {A[2]}]
+set_load -pin_load -max 0.32 [get_ports {A[2]}]
+set_load -pin_load -min 0.0014 [get_ports {A[1]}]
+set_load -pin_load -max 0.32 [get_ports {A[1]}]
+set_load -pin_load -min 0.0014 [get_ports {A[0]}]
+set_load -pin_load -max 0.32 [get_ports {A[0]}]
+set_load -pin_load -min 0.0014 [get_ports {D[7]}]
+set_load -pin_load -max 0.32 [get_ports {D[7]}]
+set_load -pin_load -min 0.0014 [get_ports {D[6]}]
+set_load -pin_load -max 0.32 [get_ports {D[6]}]
+set_load -pin_load -min 0.0014 [get_ports {D[5]}]
+set_load -pin_load -max 0.32 [get_ports {D[5]}]
+set_load -pin_load -min 0.0014 [get_ports {D[4]}]
+set_load -pin_load -max 0.32 [get_ports {D[4]}]
+set_load -pin_load -min 0.0014 [get_ports {D[3]}]
+set_load -pin_load -max 0.32 [get_ports {D[3]}]
+set_load -pin_load -min 0.0014 [get_ports {D[2]}]
+set_load -pin_load -max 0.32 [get_ports {D[2]}]
+set_load -pin_load -min 0.0014 [get_ports {D[1]}]
+set_load -pin_load -max 0.32 [get_ports {D[1]}]
+set_load -pin_load -min 0.0014 [get_ports {D[0]}]
+set_load -pin_load -max 0.32 [get_ports {D[0]}]
+set_false_path -from [get_ports nRESET]
+group_path -name C2C -from [list \
+  [get_cells alu_flags__DFFE_inst_latch_cf2_reg]  \
+  [get_cells alu_flags__SYNTHESIZED_WIRE_39_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_pf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_nf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_sf_reg]  \
+  [get_cells interrupts__im2_reg]  \
+  [get_cells interrupts__im1_reg]  \
+  [get_cells {data_pins__dout_reg[4]}]  \
+  [get_cells alu_flags__flags_hf2_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_hf_reg]  \
+  [get_cells {data_pins__dout_reg[3]}]  \
+  [get_cells alu_flags__flags_xf_reg]  \
+  [get_cells {data_pins__dout_reg[5]}]  \
+  [get_cells alu_flags__flags_yf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_cf_reg]  \
+  [get_cells {alu_/result_lo_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[15]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[8]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[14]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[13]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[12]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[11]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[10]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[9]}]  \
+  [get_cells {alu_/result_lo_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[6]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[5]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[4]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[3]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[1]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[15]}]  \
+  [get_cells {address_latch__Q_reg[11]}]  \
+  [get_cells {address_latch__Q_reg[13]}]  \
+  [get_cells {address_latch__Q_reg[14]}]  \
+  [get_cells {address_latch__Q_reg[2]}]  \
+  [get_cells {address_latch__Q_reg[3]}]  \
+  [get_cells {address_latch__Q_reg[4]}]  \
+  [get_cells {address_latch__Q_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[10]}]  \
+  [get_cells {address_latch__Q_reg[9]}]  \
+  [get_cells {address_latch__Q_reg[12]}]  \
+  [get_cells {address_latch__Q_reg[8]}]  \
+  [get_cells alu_control__flags_cond_true_reg]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[2]}]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells interrupts__iff1_reg]  \
+  [get_cells reg_control__bank_hl_de2_reg]  \
+  [get_cells reg_control__bank_hl_de1_reg]  \
+  [get_cells interrupts__in_nmi_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__DFFE_inst44_reg]  \
+  [get_cells reg_control__bank_af_reg]  \
+  [get_cells decode_state__DFFE_instNonRep_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_15_reg]  \
+  [get_cells interrupts__DFFE_instIFF2_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mwr_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_intr_ff3_reg]  \
+  [get_cells memory_ifc__q2_reg]  \
+  [get_cells memory_ifc__q1_reg]  \
+  [get_cells clk_delay__DFF_inst5_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_7_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_16_reg]  \
+  [get_cells sequencer__DFFE_T2_ff_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff3_reg]  \
+  [get_cells sequencer__T6_reg]  \
+  [get_cells sequencer__DFFE_T4_ff_reg]  \
+  [get_cells sequencer__M5_reg]  \
+  [get_cells sequencer__DFFE_M1_ff_reg]  \
+  [get_cells resets__DFFE_intr_ff3_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_10_reg]  \
+  [get_cells clk_delay__hold_clk_busrq_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__int_armed_reg]  \
+  [get_cells resets__clrpc_int_reg]  \
+  [get_cells resets__x1_reg]  \
+  [get_cells interrupts__nmi_armed_reg]  \
+  [get_cells memory_ifc__DFFE_mreq_ff2_reg]  \
+  [get_cells memory_ifc__wait_mwr_reg]  \
+  [get_cells memory_ifc__mwr_wr_reg]  \
+  [get_cells memory_ifc__wait_m_ALTERA_SYNTHESIZED1_reg]  \
+  [get_cells memory_ifc__wait_mrd_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff3_reg]  \
+  [get_cells memory_ifc__wait_iorq_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff4_reg]  \
+  [get_cells memory_ifc__wait_iorqinta_reg]  \
+  [get_cells sequencer__DFFE_M2_ff_reg]  \
+  [get_cells sequencer__DFFE_T1_ff_reg]  \
+  [get_cells sequencer__DFFE_T3_ff_reg]  \
+  [get_cells {ir__opcode_reg[1]}]  \
+  [get_cells {ir__opcode_reg[0]}]  \
+  [get_cells {ir__opcode_reg[7]}]  \
+  [get_cells sequencer__DFFE_M3_ff_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_8_reg]  \
+  [get_cells decode_state__DFFE_instIY1_reg]  \
+  [get_cells decode_state__DFFE_inst4_reg]  \
+  [get_cells sequencer__DFFE_M4_ff_reg]  \
+  [get_cells sequencer__DFFE_T5_ff_reg]  \
+  [get_cells reg_control__bank_exx_reg]  \
+  [get_cells alu_control__DFFE_latch_pf_tmp_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff1_reg]  \
+  [get_cells {alu_/op2_high_reg[3]}]  \
+  [get_cells {alu_/op2_low_reg[3]}]  \
+  [get_cells {alu_/result_lo_reg[1]}]  \
+  [get_cells {alu_/result_lo_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[2]}]  \
+  [get_cells {alu_/op2_low_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[1]}]  \
+  [get_cells {alu_/op2_high_reg[2]}]  \
+  [get_cells {alu_/op2_high_reg[0]}]  \
+  [get_cells {alu_/op2_high_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[0]}]  \
+  [get_cells {alu_/op1_high_reg[3]}]  \
+  [get_cells {alu_/op1_low_reg[2]}]  \
+  [get_cells {alu_/op1_low_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[1]}]  \
+  [get_cells {alu_/op1_high_reg[2]}]  \
+  [get_cells decode_state__in_halt_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_17_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_12_reg]  \
+  [get_cells {ir__opcode_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[0]}]  \
+  [get_cells {data_pins__dout_reg[1]}]  \
+  [get_cells {data_pins__dout_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[6]}]  \
+  [get_cells {data_pins__dout_reg[7]}]  \
+  [get_cells {ir__opcode_reg[4]}]  \
+  [get_cells {ir__opcode_reg[5]}]  \
+  [get_cells {ir__opcode_reg[2]}]  \
+  [get_cells {ir__opcode_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[0]}]  \
+  [get_cells {address_latch__Q_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[5]}]  \
+  [get_cells {address_latch__Q_reg[1]}]  \
+  [get_cells decode_state__DFFE_instED_reg]  \
+  [get_cells decode_state__DFFE_instCB_reg] ] -to [list \
+  [get_cells reg_file__b2v_latch_de_lo_RC_CG_HIER_INST26/enl_reg]  \
+  [get_cells reg_file__b2v_latch_de_hi_RC_CG_HIER_INST25/enl_reg]  \
+  [get_cells reg_file__b2v_latch_de2_lo_RC_CG_HIER_INST24/enl_reg]  \
+  [get_cells reg_file__b2v_latch_de2_hi_RC_CG_HIER_INST23/enl_reg]  \
+  [get_cells data_pins__RC_CG_HIER_INST11/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc_lo_RC_CG_HIER_INST22/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc_hi_RC_CG_HIER_INST21/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc2_lo_RC_CG_HIER_INST20/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc2_hi_RC_CG_HIER_INST19/enl_reg]  \
+  [get_cells alu_/RC_CG_HIER_INST9/enl_reg]  \
+  [get_cells alu_/RC_CG_HIER_INST10/enl_reg]  \
+  [get_cells reg_file__b2v_latch_wz_lo_RC_CG_HIER_INST42/enl_reg]  \
+  [get_cells reg_file__b2v_latch_wz_hi_RC_CG_HIER_INST41/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af_lo_RC_CG_HIER_INST18/enl_reg]  \
+  [get_cells reg_file__b2v_latch_sp_lo_RC_CG_HIER_INST40/enl_reg]  \
+  [get_cells reg_file__b2v_latch_sp_hi_RC_CG_HIER_INST39/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af_hi_RC_CG_HIER_INST17/enl_reg]  \
+  [get_cells reg_file__b2v_latch_pc_lo_RC_CG_HIER_INST38/enl_reg]  \
+  [get_cells reg_file__b2v_latch_pc_hi_RC_CG_HIER_INST37/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af2_lo_RC_CG_HIER_INST16/enl_reg]  \
+  [get_cells reg_file__b2v_latch_iy_lo_RC_CG_HIER_INST36/enl_reg]  \
+  [get_cells reg_file__b2v_latch_iy_hi_RC_CG_HIER_INST35/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af2_hi_RC_CG_HIER_INST15/enl_reg]  \
+  [get_cells address_pins__RC_CG_HIER_INST5/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ix_lo_RC_CG_HIER_INST34/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ix_hi_RC_CG_HIER_INST33/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ir_lo_RC_CG_HIER_INST32/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ir_hi_RC_CG_HIER_INST31/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl_lo_RC_CG_HIER_INST30/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl_hi_RC_CG_HIER_INST29/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl2_lo_RC_CG_HIER_INST28/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl2_hi_RC_CG_HIER_INST27/enl_reg]  \
+  [get_cells alu_/RC_CG_HIER_INST6/enl_reg]  \
+  [get_cells address_latch__RC_CG_HIER_INST4/enl_reg]  \
+  [get_cells RC_CG_HIER_INST1/enl_reg]  \
+  [get_cells memory_ifc__RC_CG_HIER_INST13/enl_reg]  \
+  [get_cells RC_CG_HIER_INST2/enl_reg]  \
+  [get_cells sequencer__RC_CG_HIER_INST44/enl_reg]  \
+  [get_cells reg_control__RC_CG_HIER_INST14/enl_reg]  \
+  [get_cells RC_CG_HIER_INST3/enl_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_cf2_reg]  \
+  [get_cells alu_flags__SYNTHESIZED_WIRE_39_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_pf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_nf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_sf_reg]  \
+  [get_cells interrupts__im2_reg]  \
+  [get_cells interrupts__im1_reg]  \
+  [get_cells {data_pins__dout_reg[4]}]  \
+  [get_cells alu_flags__flags_hf2_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_hf_reg]  \
+  [get_cells {data_pins__dout_reg[3]}]  \
+  [get_cells alu_flags__flags_xf_reg]  \
+  [get_cells {data_pins__dout_reg[5]}]  \
+  [get_cells alu_flags__flags_yf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_cf_reg]  \
+  [get_cells {alu_/result_lo_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[15]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[8]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[14]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[13]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[12]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[11]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[10]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[9]}]  \
+  [get_cells {alu_/result_lo_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[6]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[5]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[4]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[3]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[1]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[15]}]  \
+  [get_cells {address_latch__Q_reg[11]}]  \
+  [get_cells {address_latch__Q_reg[13]}]  \
+  [get_cells {address_latch__Q_reg[14]}]  \
+  [get_cells {address_latch__Q_reg[2]}]  \
+  [get_cells {address_latch__Q_reg[3]}]  \
+  [get_cells {address_latch__Q_reg[4]}]  \
+  [get_cells {address_latch__Q_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[10]}]  \
+  [get_cells {address_latch__Q_reg[9]}]  \
+  [get_cells {address_latch__Q_reg[12]}]  \
+  [get_cells {address_latch__Q_reg[8]}]  \
+  [get_cells alu_control__flags_cond_true_reg]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[2]}]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells interrupts__iff1_reg]  \
+  [get_cells reg_control__bank_hl_de2_reg]  \
+  [get_cells reg_control__bank_hl_de1_reg]  \
+  [get_cells interrupts__in_nmi_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__DFFE_inst44_reg]  \
+  [get_cells reg_control__bank_af_reg]  \
+  [get_cells decode_state__DFFE_instNonRep_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_15_reg]  \
+  [get_cells interrupts__DFFE_instIFF2_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mwr_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_intr_ff3_reg]  \
+  [get_cells memory_ifc__q2_reg]  \
+  [get_cells memory_ifc__q1_reg]  \
+  [get_cells clk_delay__DFF_inst5_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_7_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_16_reg]  \
+  [get_cells sequencer__DFFE_T2_ff_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff3_reg]  \
+  [get_cells sequencer__T6_reg]  \
+  [get_cells sequencer__DFFE_T4_ff_reg]  \
+  [get_cells sequencer__M5_reg]  \
+  [get_cells sequencer__DFFE_M1_ff_reg]  \
+  [get_cells resets__DFFE_intr_ff3_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_10_reg]  \
+  [get_cells clk_delay__hold_clk_busrq_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__int_armed_reg]  \
+  [get_cells resets__clrpc_int_reg]  \
+  [get_cells resets__x1_reg]  \
+  [get_cells interrupts__nmi_armed_reg]  \
+  [get_cells memory_ifc__DFFE_mreq_ff2_reg]  \
+  [get_cells memory_ifc__wait_mwr_reg]  \
+  [get_cells memory_ifc__mwr_wr_reg]  \
+  [get_cells memory_ifc__wait_m_ALTERA_SYNTHESIZED1_reg]  \
+  [get_cells memory_ifc__wait_mrd_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff3_reg]  \
+  [get_cells memory_ifc__wait_iorq_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff4_reg]  \
+  [get_cells memory_ifc__wait_iorqinta_reg]  \
+  [get_cells sequencer__DFFE_M2_ff_reg]  \
+  [get_cells sequencer__DFFE_T1_ff_reg]  \
+  [get_cells sequencer__DFFE_T3_ff_reg]  \
+  [get_cells {ir__opcode_reg[1]}]  \
+  [get_cells {ir__opcode_reg[0]}]  \
+  [get_cells {ir__opcode_reg[7]}]  \
+  [get_cells sequencer__DFFE_M3_ff_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_8_reg]  \
+  [get_cells decode_state__DFFE_instIY1_reg]  \
+  [get_cells decode_state__DFFE_inst4_reg]  \
+  [get_cells sequencer__DFFE_M4_ff_reg]  \
+  [get_cells sequencer__DFFE_T5_ff_reg]  \
+  [get_cells reg_control__bank_exx_reg]  \
+  [get_cells alu_control__DFFE_latch_pf_tmp_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff1_reg]  \
+  [get_cells {alu_/op2_high_reg[3]}]  \
+  [get_cells {alu_/op2_low_reg[3]}]  \
+  [get_cells {alu_/result_lo_reg[1]}]  \
+  [get_cells {alu_/result_lo_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[2]}]  \
+  [get_cells {alu_/op2_low_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[1]}]  \
+  [get_cells {alu_/op2_high_reg[2]}]  \
+  [get_cells {alu_/op2_high_reg[0]}]  \
+  [get_cells {alu_/op2_high_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[0]}]  \
+  [get_cells {alu_/op1_high_reg[3]}]  \
+  [get_cells {alu_/op1_low_reg[2]}]  \
+  [get_cells {alu_/op1_low_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[1]}]  \
+  [get_cells {alu_/op1_high_reg[2]}]  \
+  [get_cells decode_state__in_halt_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_17_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_12_reg]  \
+  [get_cells {ir__opcode_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[0]}]  \
+  [get_cells {data_pins__dout_reg[1]}]  \
+  [get_cells {data_pins__dout_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[6]}]  \
+  [get_cells {data_pins__dout_reg[7]}]  \
+  [get_cells {ir__opcode_reg[4]}]  \
+  [get_cells {ir__opcode_reg[5]}]  \
+  [get_cells {ir__opcode_reg[2]}]  \
+  [get_cells {ir__opcode_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[0]}]  \
+  [get_cells {address_latch__Q_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[5]}]  \
+  [get_cells {address_latch__Q_reg[1]}]  \
+  [get_cells decode_state__DFFE_instED_reg]  \
+  [get_cells decode_state__DFFE_instCB_reg] ]
+group_path -name C2O -from [list \
+  [get_cells alu_flags__DFFE_inst_latch_cf2_reg]  \
+  [get_cells alu_flags__SYNTHESIZED_WIRE_39_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_pf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_nf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_sf_reg]  \
+  [get_cells interrupts__im2_reg]  \
+  [get_cells interrupts__im1_reg]  \
+  [get_cells {data_pins__dout_reg[4]}]  \
+  [get_cells alu_flags__flags_hf2_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_hf_reg]  \
+  [get_cells {data_pins__dout_reg[3]}]  \
+  [get_cells alu_flags__flags_xf_reg]  \
+  [get_cells {data_pins__dout_reg[5]}]  \
+  [get_cells alu_flags__flags_yf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_cf_reg]  \
+  [get_cells {alu_/result_lo_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[15]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[8]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[14]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[13]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[12]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[11]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[10]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[9]}]  \
+  [get_cells {alu_/result_lo_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[6]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[5]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[4]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[3]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[1]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[15]}]  \
+  [get_cells {address_latch__Q_reg[11]}]  \
+  [get_cells {address_latch__Q_reg[13]}]  \
+  [get_cells {address_latch__Q_reg[14]}]  \
+  [get_cells {address_latch__Q_reg[2]}]  \
+  [get_cells {address_latch__Q_reg[3]}]  \
+  [get_cells {address_latch__Q_reg[4]}]  \
+  [get_cells {address_latch__Q_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[10]}]  \
+  [get_cells {address_latch__Q_reg[9]}]  \
+  [get_cells {address_latch__Q_reg[12]}]  \
+  [get_cells {address_latch__Q_reg[8]}]  \
+  [get_cells alu_control__flags_cond_true_reg]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[2]}]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells interrupts__iff1_reg]  \
+  [get_cells reg_control__bank_hl_de2_reg]  \
+  [get_cells reg_control__bank_hl_de1_reg]  \
+  [get_cells interrupts__in_nmi_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__DFFE_inst44_reg]  \
+  [get_cells reg_control__bank_af_reg]  \
+  [get_cells decode_state__DFFE_instNonRep_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_15_reg]  \
+  [get_cells interrupts__DFFE_instIFF2_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mwr_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_intr_ff3_reg]  \
+  [get_cells memory_ifc__q2_reg]  \
+  [get_cells memory_ifc__q1_reg]  \
+  [get_cells clk_delay__DFF_inst5_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_7_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_16_reg]  \
+  [get_cells sequencer__DFFE_T2_ff_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff3_reg]  \
+  [get_cells sequencer__T6_reg]  \
+  [get_cells sequencer__DFFE_T4_ff_reg]  \
+  [get_cells sequencer__M5_reg]  \
+  [get_cells sequencer__DFFE_M1_ff_reg]  \
+  [get_cells resets__DFFE_intr_ff3_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_10_reg]  \
+  [get_cells clk_delay__hold_clk_busrq_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__int_armed_reg]  \
+  [get_cells resets__clrpc_int_reg]  \
+  [get_cells resets__x1_reg]  \
+  [get_cells interrupts__nmi_armed_reg]  \
+  [get_cells memory_ifc__DFFE_mreq_ff2_reg]  \
+  [get_cells memory_ifc__wait_mwr_reg]  \
+  [get_cells memory_ifc__mwr_wr_reg]  \
+  [get_cells memory_ifc__wait_m_ALTERA_SYNTHESIZED1_reg]  \
+  [get_cells memory_ifc__wait_mrd_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff3_reg]  \
+  [get_cells memory_ifc__wait_iorq_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff4_reg]  \
+  [get_cells memory_ifc__wait_iorqinta_reg]  \
+  [get_cells sequencer__DFFE_M2_ff_reg]  \
+  [get_cells sequencer__DFFE_T1_ff_reg]  \
+  [get_cells sequencer__DFFE_T3_ff_reg]  \
+  [get_cells {ir__opcode_reg[1]}]  \
+  [get_cells {ir__opcode_reg[0]}]  \
+  [get_cells {ir__opcode_reg[7]}]  \
+  [get_cells sequencer__DFFE_M3_ff_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_8_reg]  \
+  [get_cells decode_state__DFFE_instIY1_reg]  \
+  [get_cells decode_state__DFFE_inst4_reg]  \
+  [get_cells sequencer__DFFE_M4_ff_reg]  \
+  [get_cells sequencer__DFFE_T5_ff_reg]  \
+  [get_cells reg_control__bank_exx_reg]  \
+  [get_cells alu_control__DFFE_latch_pf_tmp_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff1_reg]  \
+  [get_cells {alu_/op2_high_reg[3]}]  \
+  [get_cells {alu_/op2_low_reg[3]}]  \
+  [get_cells {alu_/result_lo_reg[1]}]  \
+  [get_cells {alu_/result_lo_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[2]}]  \
+  [get_cells {alu_/op2_low_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[1]}]  \
+  [get_cells {alu_/op2_high_reg[2]}]  \
+  [get_cells {alu_/op2_high_reg[0]}]  \
+  [get_cells {alu_/op2_high_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[0]}]  \
+  [get_cells {alu_/op1_high_reg[3]}]  \
+  [get_cells {alu_/op1_low_reg[2]}]  \
+  [get_cells {alu_/op1_low_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[1]}]  \
+  [get_cells {alu_/op1_high_reg[2]}]  \
+  [get_cells decode_state__in_halt_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_17_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_12_reg]  \
+  [get_cells {ir__opcode_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[0]}]  \
+  [get_cells {data_pins__dout_reg[1]}]  \
+  [get_cells {data_pins__dout_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[6]}]  \
+  [get_cells {data_pins__dout_reg[7]}]  \
+  [get_cells {ir__opcode_reg[4]}]  \
+  [get_cells {ir__opcode_reg[5]}]  \
+  [get_cells {ir__opcode_reg[2]}]  \
+  [get_cells {ir__opcode_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[0]}]  \
+  [get_cells {address_latch__Q_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[5]}]  \
+  [get_cells {address_latch__Q_reg[1]}]  \
+  [get_cells decode_state__DFFE_instED_reg]  \
+  [get_cells decode_state__DFFE_instCB_reg] ] -to [list \
+  [get_ports nM1]  \
+  [get_ports nMREQ]  \
+  [get_ports nIORQ]  \
+  [get_ports nRD]  \
+  [get_ports nWR]  \
+  [get_ports nRFSH]  \
+  [get_ports nHALT]  \
+  [get_ports nBUSACK]  \
+  [get_ports {A[15]}]  \
+  [get_ports {A[14]}]  \
+  [get_ports {A[13]}]  \
+  [get_ports {A[12]}]  \
+  [get_ports {A[11]}]  \
+  [get_ports {A[10]}]  \
+  [get_ports {A[9]}]  \
+  [get_ports {A[8]}]  \
+  [get_ports {A[7]}]  \
+  [get_ports {A[6]}]  \
+  [get_ports {A[5]}]  \
+  [get_ports {A[4]}]  \
+  [get_ports {A[3]}]  \
+  [get_ports {A[2]}]  \
+  [get_ports {A[1]}]  \
+  [get_ports {A[0]}]  \
+  [get_ports {D[7]}]  \
+  [get_ports {D[6]}]  \
+  [get_ports {D[5]}]  \
+  [get_ports {D[4]}]  \
+  [get_ports {D[3]}]  \
+  [get_ports {D[2]}]  \
+  [get_ports {D[1]}]  \
+  [get_ports {D[0]}] ]
+group_path -name I2C -from [list \
+  [get_ports nWAIT]  \
+  [get_ports nINT]  \
+  [get_ports nNMI]  \
+  [get_ports nRESET]  \
+  [get_ports nBUSRQ]  \
+  [get_ports CLK]  \
+  [get_ports {D[7]}]  \
+  [get_ports {D[6]}]  \
+  [get_ports {D[5]}]  \
+  [get_ports {D[4]}]  \
+  [get_ports {D[3]}]  \
+  [get_ports {D[2]}]  \
+  [get_ports {D[1]}]  \
+  [get_ports {D[0]}] ] -to [list \
+  [get_cells reg_file__b2v_latch_de_lo_RC_CG_HIER_INST26/enl_reg]  \
+  [get_cells reg_file__b2v_latch_de_hi_RC_CG_HIER_INST25/enl_reg]  \
+  [get_cells reg_file__b2v_latch_de2_lo_RC_CG_HIER_INST24/enl_reg]  \
+  [get_cells reg_file__b2v_latch_de2_hi_RC_CG_HIER_INST23/enl_reg]  \
+  [get_cells data_pins__RC_CG_HIER_INST11/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc_lo_RC_CG_HIER_INST22/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc_hi_RC_CG_HIER_INST21/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc2_lo_RC_CG_HIER_INST20/enl_reg]  \
+  [get_cells reg_file__b2v_latch_bc2_hi_RC_CG_HIER_INST19/enl_reg]  \
+  [get_cells alu_/RC_CG_HIER_INST9/enl_reg]  \
+  [get_cells alu_/RC_CG_HIER_INST10/enl_reg]  \
+  [get_cells reg_file__b2v_latch_wz_lo_RC_CG_HIER_INST42/enl_reg]  \
+  [get_cells reg_file__b2v_latch_wz_hi_RC_CG_HIER_INST41/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af_lo_RC_CG_HIER_INST18/enl_reg]  \
+  [get_cells reg_file__b2v_latch_sp_lo_RC_CG_HIER_INST40/enl_reg]  \
+  [get_cells reg_file__b2v_latch_sp_hi_RC_CG_HIER_INST39/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af_hi_RC_CG_HIER_INST17/enl_reg]  \
+  [get_cells reg_file__b2v_latch_pc_lo_RC_CG_HIER_INST38/enl_reg]  \
+  [get_cells reg_file__b2v_latch_pc_hi_RC_CG_HIER_INST37/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af2_lo_RC_CG_HIER_INST16/enl_reg]  \
+  [get_cells reg_file__b2v_latch_iy_lo_RC_CG_HIER_INST36/enl_reg]  \
+  [get_cells reg_file__b2v_latch_iy_hi_RC_CG_HIER_INST35/enl_reg]  \
+  [get_cells reg_file__b2v_latch_af2_hi_RC_CG_HIER_INST15/enl_reg]  \
+  [get_cells address_pins__RC_CG_HIER_INST5/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ix_lo_RC_CG_HIER_INST34/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ix_hi_RC_CG_HIER_INST33/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ir_lo_RC_CG_HIER_INST32/enl_reg]  \
+  [get_cells reg_file__b2v_latch_ir_hi_RC_CG_HIER_INST31/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl_lo_RC_CG_HIER_INST30/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl_hi_RC_CG_HIER_INST29/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl2_lo_RC_CG_HIER_INST28/enl_reg]  \
+  [get_cells reg_file__b2v_latch_hl2_hi_RC_CG_HIER_INST27/enl_reg]  \
+  [get_cells alu_/RC_CG_HIER_INST6/enl_reg]  \
+  [get_cells address_latch__RC_CG_HIER_INST4/enl_reg]  \
+  [get_cells RC_CG_HIER_INST1/enl_reg]  \
+  [get_cells memory_ifc__RC_CG_HIER_INST13/enl_reg]  \
+  [get_cells RC_CG_HIER_INST2/enl_reg]  \
+  [get_cells sequencer__RC_CG_HIER_INST44/enl_reg]  \
+  [get_cells reg_control__RC_CG_HIER_INST14/enl_reg]  \
+  [get_cells RC_CG_HIER_INST3/enl_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_cf2_reg]  \
+  [get_cells alu_flags__SYNTHESIZED_WIRE_39_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_pf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_nf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_sf_reg]  \
+  [get_cells interrupts__im2_reg]  \
+  [get_cells interrupts__im1_reg]  \
+  [get_cells {data_pins__dout_reg[4]}]  \
+  [get_cells alu_flags__flags_hf2_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_hf_reg]  \
+  [get_cells {data_pins__dout_reg[3]}]  \
+  [get_cells alu_flags__flags_xf_reg]  \
+  [get_cells {data_pins__dout_reg[5]}]  \
+  [get_cells alu_flags__flags_yf_reg]  \
+  [get_cells alu_flags__DFFE_inst_latch_cf_reg]  \
+  [get_cells {alu_/result_lo_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[15]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[8]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[14]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[13]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[12]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[11]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[10]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[9]}]  \
+  [get_cells {alu_/result_lo_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[6]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[5]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[4]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[3]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[2]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[1]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[0]}]  \
+  [get_cells {address_pins__DFFE_apin_latch_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[15]}]  \
+  [get_cells {address_latch__Q_reg[11]}]  \
+  [get_cells {address_latch__Q_reg[13]}]  \
+  [get_cells {address_latch__Q_reg[14]}]  \
+  [get_cells {address_latch__Q_reg[2]}]  \
+  [get_cells {address_latch__Q_reg[3]}]  \
+  [get_cells {address_latch__Q_reg[4]}]  \
+  [get_cells {address_latch__Q_reg[7]}]  \
+  [get_cells {address_latch__Q_reg[10]}]  \
+  [get_cells {address_latch__Q_reg[9]}]  \
+  [get_cells {address_latch__Q_reg[12]}]  \
+  [get_cells {address_latch__Q_reg[8]}]  \
+  [get_cells alu_control__flags_cond_true_reg]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_wz_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_af_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_bc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_sp_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_iy_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ix_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ix_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_sp_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_af_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_hl2_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_de_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_af2_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_bc2_hi_latch_reg[2]}]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells interrupts__iff1_reg]  \
+  [get_cells reg_control__bank_hl_de2_reg]  \
+  [get_cells reg_control__bank_hl_de1_reg]  \
+  [get_cells interrupts__in_nmi_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__DFFE_inst44_reg]  \
+  [get_cells reg_control__bank_af_reg]  \
+  [get_cells decode_state__DFFE_instNonRep_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_15_reg]  \
+  [get_cells interrupts__DFFE_instIFF2_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_mwr_ff1_reg]  \
+  [get_cells memory_ifc__DFFE_intr_ff3_reg]  \
+  [get_cells memory_ifc__q2_reg]  \
+  [get_cells memory_ifc__q1_reg]  \
+  [get_cells clk_delay__DFF_inst5_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_7_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_16_reg]  \
+  [get_cells sequencer__DFFE_T2_ff_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff3_reg]  \
+  [get_cells sequencer__T6_reg]  \
+  [get_cells sequencer__DFFE_T4_ff_reg]  \
+  [get_cells sequencer__M5_reg]  \
+  [get_cells sequencer__DFFE_M1_ff_reg]  \
+  [get_cells resets__DFFE_intr_ff3_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_9_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_10_reg]  \
+  [get_cells clk_delay__hold_clk_busrq_ALTERA_SYNTHESIZED_reg]  \
+  [get_cells interrupts__int_armed_reg]  \
+  [get_cells resets__clrpc_int_reg]  \
+  [get_cells resets__x1_reg]  \
+  [get_cells interrupts__nmi_armed_reg]  \
+  [get_cells memory_ifc__DFFE_mreq_ff2_reg]  \
+  [get_cells memory_ifc__wait_mwr_reg]  \
+  [get_cells memory_ifc__mwr_wr_reg]  \
+  [get_cells memory_ifc__wait_m_ALTERA_SYNTHESIZED1_reg]  \
+  [get_cells memory_ifc__wait_mrd_reg]  \
+  [get_cells memory_ifc__DFFE_mrd_ff3_reg]  \
+  [get_cells memory_ifc__wait_iorq_reg]  \
+  [get_cells memory_ifc__DFFE_iorq_ff4_reg]  \
+  [get_cells memory_ifc__wait_iorqinta_reg]  \
+  [get_cells sequencer__DFFE_M2_ff_reg]  \
+  [get_cells sequencer__DFFE_T1_ff_reg]  \
+  [get_cells sequencer__DFFE_T3_ff_reg]  \
+  [get_cells {ir__opcode_reg[1]}]  \
+  [get_cells {ir__opcode_reg[0]}]  \
+  [get_cells {ir__opcode_reg[7]}]  \
+  [get_cells sequencer__DFFE_M3_ff_reg]  \
+  [get_cells clk_delay__SYNTHESIZED_WIRE_8_reg]  \
+  [get_cells decode_state__DFFE_instIY1_reg]  \
+  [get_cells decode_state__DFFE_inst4_reg]  \
+  [get_cells sequencer__DFFE_M4_ff_reg]  \
+  [get_cells sequencer__DFFE_T5_ff_reg]  \
+  [get_cells reg_control__bank_exx_reg]  \
+  [get_cells alu_control__DFFE_latch_pf_tmp_reg]  \
+  [get_cells memory_ifc__DFFE_m1_ff1_reg]  \
+  [get_cells {alu_/op2_high_reg[3]}]  \
+  [get_cells {alu_/op2_low_reg[3]}]  \
+  [get_cells {alu_/result_lo_reg[1]}]  \
+  [get_cells {alu_/result_lo_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[2]}]  \
+  [get_cells {alu_/op2_low_reg[0]}]  \
+  [get_cells {alu_/op2_low_reg[1]}]  \
+  [get_cells {alu_/op2_high_reg[2]}]  \
+  [get_cells {alu_/op2_high_reg[0]}]  \
+  [get_cells {alu_/op2_high_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[0]}]  \
+  [get_cells {alu_/op1_high_reg[3]}]  \
+  [get_cells {alu_/op1_low_reg[2]}]  \
+  [get_cells {alu_/op1_low_reg[1]}]  \
+  [get_cells {alu_/op1_low_reg[3]}]  \
+  [get_cells {alu_/op1_high_reg[1]}]  \
+  [get_cells {alu_/op1_high_reg[2]}]  \
+  [get_cells decode_state__in_halt_reg]  \
+  [get_cells memory_ifc__SYNTHESIZED_WIRE_17_reg]  \
+  [get_cells resets__SYNTHESIZED_WIRE_12_reg]  \
+  [get_cells {ir__opcode_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[0]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[3]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[5]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[2]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[1]}]  \
+  [get_cells {reg_file__b2v_latch_pc_lo_latch_reg[6]}]  \
+  [get_cells {reg_file__b2v_latch_pc_hi_latch_reg[7]}]  \
+  [get_cells {reg_file__b2v_latch_ir_hi_latch_reg[4]}]  \
+  [get_cells {reg_file__b2v_latch_ir_lo_latch_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[0]}]  \
+  [get_cells {data_pins__dout_reg[1]}]  \
+  [get_cells {data_pins__dout_reg[2]}]  \
+  [get_cells {data_pins__dout_reg[6]}]  \
+  [get_cells {data_pins__dout_reg[7]}]  \
+  [get_cells {ir__opcode_reg[4]}]  \
+  [get_cells {ir__opcode_reg[5]}]  \
+  [get_cells {ir__opcode_reg[2]}]  \
+  [get_cells {ir__opcode_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[0]}]  \
+  [get_cells {address_latch__Q_reg[6]}]  \
+  [get_cells {address_latch__Q_reg[5]}]  \
+  [get_cells {address_latch__Q_reg[1]}]  \
+  [get_cells decode_state__DFFE_instED_reg]  \
+  [get_cells decode_state__DFFE_instCB_reg] ]
+group_path -name I2O -from [list \
+  [get_ports nWAIT]  \
+  [get_ports nINT]  \
+  [get_ports nNMI]  \
+  [get_ports nRESET]  \
+  [get_ports nBUSRQ]  \
+  [get_ports CLK]  \
+  [get_ports {D[7]}]  \
+  [get_ports {D[6]}]  \
+  [get_ports {D[5]}]  \
+  [get_ports {D[4]}]  \
+  [get_ports {D[3]}]  \
+  [get_ports {D[2]}]  \
+  [get_ports {D[1]}]  \
+  [get_ports {D[0]}] ] -to [list \
+  [get_ports nM1]  \
+  [get_ports nMREQ]  \
+  [get_ports nIORQ]  \
+  [get_ports nRD]  \
+  [get_ports nWR]  \
+  [get_ports nRFSH]  \
+  [get_ports nHALT]  \
+  [get_ports nBUSACK]  \
+  [get_ports {A[15]}]  \
+  [get_ports {A[14]}]  \
+  [get_ports {A[13]}]  \
+  [get_ports {A[12]}]  \
+  [get_ports {A[11]}]  \
+  [get_ports {A[10]}]  \
+  [get_ports {A[9]}]  \
+  [get_ports {A[8]}]  \
+  [get_ports {A[7]}]  \
+  [get_ports {A[6]}]  \
+  [get_ports {A[5]}]  \
+  [get_ports {A[4]}]  \
+  [get_ports {A[3]}]  \
+  [get_ports {A[2]}]  \
+  [get_ports {A[1]}]  \
+  [get_ports {A[0]}]  \
+  [get_ports {D[7]}]  \
+  [get_ports {D[6]}]  \
+  [get_ports {D[5]}]  \
+  [get_ports {D[4]}]  \
+  [get_ports {D[3]}]  \
+  [get_ports {D[2]}]  \
+  [get_ports {D[1]}]  \
+  [get_ports {D[0]}] ]
+group_path -name cg_enable_group_CLK -through [list \
+  [get_pins address_latch__RC_CG_HIER_INST4/enable]  \
+  [get_pins address_pins__RC_CG_HIER_INST5/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST6/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST9/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST10/enable]  \
+  [get_pins data_pins__RC_CG_HIER_INST11/enable]  \
+  [get_pins memory_ifc__RC_CG_HIER_INST13/enable]  \
+  [get_pins reg_control__RC_CG_HIER_INST14/enable]  \
+  [get_pins reg_file__b2v_latch_af2_hi_RC_CG_HIER_INST15/enable]  \
+  [get_pins reg_file__b2v_latch_af2_lo_RC_CG_HIER_INST16/enable]  \
+  [get_pins reg_file__b2v_latch_af_hi_RC_CG_HIER_INST17/enable]  \
+  [get_pins reg_file__b2v_latch_af_lo_RC_CG_HIER_INST18/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_hi_RC_CG_HIER_INST19/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_lo_RC_CG_HIER_INST20/enable]  \
+  [get_pins reg_file__b2v_latch_bc_hi_RC_CG_HIER_INST21/enable]  \
+  [get_pins reg_file__b2v_latch_bc_lo_RC_CG_HIER_INST22/enable]  \
+  [get_pins reg_file__b2v_latch_de2_hi_RC_CG_HIER_INST23/enable]  \
+  [get_pins reg_file__b2v_latch_de2_lo_RC_CG_HIER_INST24/enable]  \
+  [get_pins reg_file__b2v_latch_de_hi_RC_CG_HIER_INST25/enable]  \
+  [get_pins reg_file__b2v_latch_de_lo_RC_CG_HIER_INST26/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_hi_RC_CG_HIER_INST27/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_lo_RC_CG_HIER_INST28/enable]  \
+  [get_pins reg_file__b2v_latch_hl_hi_RC_CG_HIER_INST29/enable]  \
+  [get_pins reg_file__b2v_latch_hl_lo_RC_CG_HIER_INST30/enable]  \
+  [get_pins reg_file__b2v_latch_ir_hi_RC_CG_HIER_INST31/enable]  \
+  [get_pins reg_file__b2v_latch_ir_lo_RC_CG_HIER_INST32/enable]  \
+  [get_pins reg_file__b2v_latch_ix_hi_RC_CG_HIER_INST33/enable]  \
+  [get_pins reg_file__b2v_latch_ix_lo_RC_CG_HIER_INST34/enable]  \
+  [get_pins reg_file__b2v_latch_iy_hi_RC_CG_HIER_INST35/enable]  \
+  [get_pins reg_file__b2v_latch_iy_lo_RC_CG_HIER_INST36/enable]  \
+  [get_pins reg_file__b2v_latch_pc_hi_RC_CG_HIER_INST37/enable]  \
+  [get_pins reg_file__b2v_latch_pc_lo_RC_CG_HIER_INST38/enable]  \
+  [get_pins reg_file__b2v_latch_sp_hi_RC_CG_HIER_INST39/enable]  \
+  [get_pins reg_file__b2v_latch_sp_lo_RC_CG_HIER_INST40/enable]  \
+  [get_pins reg_file__b2v_latch_wz_hi_RC_CG_HIER_INST41/enable]  \
+  [get_pins reg_file__b2v_latch_wz_lo_RC_CG_HIER_INST42/enable]  \
+  [get_pins sequencer__RC_CG_HIER_INST44/enable]  \
+  [get_pins RC_CG_HIER_INST1/enable]  \
+  [get_pins RC_CG_HIER_INST2/enable]  \
+  [get_pins RC_CG_HIER_INST3/enable]  \
+  [get_pins RC_CG_HIER_INST1/enable]  \
+  [get_pins RC_CG_HIER_INST2/enable]  \
+  [get_pins RC_CG_HIER_INST3/enable]  \
+  [get_pins address_pins__RC_CG_HIER_INST5/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST10/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST6/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST9/enable]  \
+  [get_pins data_pins__RC_CG_HIER_INST11/enable]  \
+  [get_pins memory_ifc__RC_CG_HIER_INST13/enable]  \
+  [get_pins reg_control__RC_CG_HIER_INST14/enable]  \
+  [get_pins reg_file__b2v_latch_af2_hi_RC_CG_HIER_INST15/enable]  \
+  [get_pins reg_file__b2v_latch_af2_lo_RC_CG_HIER_INST16/enable]  \
+  [get_pins reg_file__b2v_latch_af_hi_RC_CG_HIER_INST17/enable]  \
+  [get_pins reg_file__b2v_latch_af_lo_RC_CG_HIER_INST18/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_hi_RC_CG_HIER_INST19/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_lo_RC_CG_HIER_INST20/enable]  \
+  [get_pins reg_file__b2v_latch_bc_hi_RC_CG_HIER_INST21/enable]  \
+  [get_pins reg_file__b2v_latch_bc_lo_RC_CG_HIER_INST22/enable]  \
+  [get_pins reg_file__b2v_latch_de2_hi_RC_CG_HIER_INST23/enable]  \
+  [get_pins reg_file__b2v_latch_de2_lo_RC_CG_HIER_INST24/enable]  \
+  [get_pins reg_file__b2v_latch_de_hi_RC_CG_HIER_INST25/enable]  \
+  [get_pins reg_file__b2v_latch_de_lo_RC_CG_HIER_INST26/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_hi_RC_CG_HIER_INST27/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_lo_RC_CG_HIER_INST28/enable]  \
+  [get_pins reg_file__b2v_latch_hl_hi_RC_CG_HIER_INST29/enable]  \
+  [get_pins reg_file__b2v_latch_hl_lo_RC_CG_HIER_INST30/enable]  \
+  [get_pins reg_file__b2v_latch_ir_hi_RC_CG_HIER_INST31/enable]  \
+  [get_pins reg_file__b2v_latch_ir_lo_RC_CG_HIER_INST32/enable]  \
+  [get_pins reg_file__b2v_latch_ix_hi_RC_CG_HIER_INST33/enable]  \
+  [get_pins reg_file__b2v_latch_ix_lo_RC_CG_HIER_INST34/enable]  \
+  [get_pins reg_file__b2v_latch_iy_hi_RC_CG_HIER_INST35/enable]  \
+  [get_pins reg_file__b2v_latch_iy_lo_RC_CG_HIER_INST36/enable]  \
+  [get_pins reg_file__b2v_latch_pc_hi_RC_CG_HIER_INST37/enable]  \
+  [get_pins reg_file__b2v_latch_pc_lo_RC_CG_HIER_INST38/enable]  \
+  [get_pins reg_file__b2v_latch_sp_hi_RC_CG_HIER_INST39/enable]  \
+  [get_pins reg_file__b2v_latch_sp_lo_RC_CG_HIER_INST40/enable]  \
+  [get_pins reg_file__b2v_latch_wz_hi_RC_CG_HIER_INST41/enable]  \
+  [get_pins reg_file__b2v_latch_wz_lo_RC_CG_HIER_INST42/enable]  \
+  [get_pins sequencer__RC_CG_HIER_INST44/enable]  \
+  [get_pins address_latch__RC_CG_HIER_INST4/enable]  \
+  [get_pins RC_CG_HIER_INST1/enable]  \
+  [get_pins RC_CG_HIER_INST2/enable]  \
+  [get_pins RC_CG_HIER_INST3/enable]  \
+  [get_pins address_pins__RC_CG_HIER_INST5/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST10/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST6/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST9/enable]  \
+  [get_pins alu_/RC_CG_DECLONE_HIER_INST/enable]  \
+  [get_pins data_pins__RC_CG_HIER_INST11/enable]  \
+  [get_pins memory_ifc__RC_CG_HIER_INST13/enable]  \
+  [get_pins reg_control__RC_CG_HIER_INST14/enable]  \
+  [get_pins reg_file__b2v_latch_af2_hi_RC_CG_HIER_INST15/enable]  \
+  [get_pins reg_file__b2v_latch_af2_lo_RC_CG_HIER_INST16/enable]  \
+  [get_pins reg_file__b2v_latch_af_hi_RC_CG_HIER_INST17/enable]  \
+  [get_pins reg_file__b2v_latch_af_lo_RC_CG_HIER_INST18/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_hi_RC_CG_HIER_INST19/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_lo_RC_CG_HIER_INST20/enable]  \
+  [get_pins reg_file__b2v_latch_bc_hi_RC_CG_HIER_INST21/enable]  \
+  [get_pins reg_file__b2v_latch_bc_lo_RC_CG_HIER_INST22/enable]  \
+  [get_pins reg_file__b2v_latch_de2_hi_RC_CG_HIER_INST23/enable]  \
+  [get_pins reg_file__b2v_latch_de2_lo_RC_CG_HIER_INST24/enable]  \
+  [get_pins reg_file__b2v_latch_de_hi_RC_CG_HIER_INST25/enable]  \
+  [get_pins reg_file__b2v_latch_de_lo_RC_CG_HIER_INST26/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_hi_RC_CG_HIER_INST27/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_lo_RC_CG_HIER_INST28/enable]  \
+  [get_pins reg_file__b2v_latch_hl_hi_RC_CG_HIER_INST29/enable]  \
+  [get_pins reg_file__b2v_latch_hl_lo_RC_CG_HIER_INST30/enable]  \
+  [get_pins reg_file__b2v_latch_ir_hi_RC_CG_HIER_INST31/enable]  \
+  [get_pins reg_file__b2v_latch_ir_lo_RC_CG_HIER_INST32/enable]  \
+  [get_pins reg_file__b2v_latch_ix_hi_RC_CG_HIER_INST33/enable]  \
+  [get_pins reg_file__b2v_latch_ix_lo_RC_CG_HIER_INST34/enable]  \
+  [get_pins reg_file__b2v_latch_iy_hi_RC_CG_HIER_INST35/enable]  \
+  [get_pins reg_file__b2v_latch_iy_lo_RC_CG_HIER_INST36/enable]  \
+  [get_pins reg_file__b2v_latch_pc_hi_RC_CG_HIER_INST37/enable]  \
+  [get_pins reg_file__b2v_latch_pc_lo_RC_CG_HIER_INST38/enable]  \
+  [get_pins reg_file__b2v_latch_sp_hi_RC_CG_HIER_INST39/enable]  \
+  [get_pins reg_file__b2v_latch_sp_lo_RC_CG_HIER_INST40/enable]  \
+  [get_pins reg_file__b2v_latch_wz_hi_RC_CG_HIER_INST41/enable]  \
+  [get_pins reg_file__b2v_latch_wz_lo_RC_CG_HIER_INST42/enable]  \
+  [get_pins sequencer__RC_CG_HIER_INST44/enable]  \
+  [get_pins address_latch__RC_CG_HIER_INST4/enable]  \
+  [get_pins RC_CG_DECLONE_HIER_INST/enable]  \
+  [get_pins RC_CG_HIER_INST1/enable]  \
+  [get_pins RC_CG_HIER_INST2/enable]  \
+  [get_pins RC_CG_HIER_INST3/enable]  \
+  [get_pins address_pins__RC_CG_HIER_INST5/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST10/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST6/enable]  \
+  [get_pins alu_/RC_CG_HIER_INST9/enable]  \
+  [get_pins alu_/RC_CG_DECLONE_HIER_INST/enable]  \
+  [get_pins data_pins__RC_CG_HIER_INST11/enable]  \
+  [get_pins memory_ifc__RC_CG_HIER_INST13/enable]  \
+  [get_pins reg_control__RC_CG_HIER_INST14/enable]  \
+  [get_pins reg_file__b2v_latch_af2_hi_RC_CG_HIER_INST15/enable]  \
+  [get_pins reg_file__b2v_latch_af2_lo_RC_CG_HIER_INST16/enable]  \
+  [get_pins reg_file__b2v_latch_af_hi_RC_CG_HIER_INST17/enable]  \
+  [get_pins reg_file__b2v_latch_af_lo_RC_CG_HIER_INST18/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_hi_RC_CG_HIER_INST19/enable]  \
+  [get_pins reg_file__b2v_latch_bc2_lo_RC_CG_HIER_INST20/enable]  \
+  [get_pins reg_file__b2v_latch_bc_hi_RC_CG_HIER_INST21/enable]  \
+  [get_pins reg_file__b2v_latch_bc_lo_RC_CG_HIER_INST22/enable]  \
+  [get_pins reg_file__b2v_latch_de2_hi_RC_CG_HIER_INST23/enable]  \
+  [get_pins reg_file__b2v_latch_de2_lo_RC_CG_HIER_INST24/enable]  \
+  [get_pins reg_file__b2v_latch_de_hi_RC_CG_HIER_INST25/enable]  \
+  [get_pins reg_file__b2v_latch_de_lo_RC_CG_HIER_INST26/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_hi_RC_CG_HIER_INST27/enable]  \
+  [get_pins reg_file__b2v_latch_hl2_lo_RC_CG_HIER_INST28/enable]  \
+  [get_pins reg_file__b2v_latch_hl_hi_RC_CG_HIER_INST29/enable]  \
+  [get_pins reg_file__b2v_latch_hl_lo_RC_CG_HIER_INST30/enable]  \
+  [get_pins reg_file__b2v_latch_ir_hi_RC_CG_HIER_INST31/enable]  \
+  [get_pins reg_file__b2v_latch_ir_lo_RC_CG_HIER_INST32/enable]  \
+  [get_pins reg_file__b2v_latch_ix_hi_RC_CG_HIER_INST33/enable]  \
+  [get_pins reg_file__b2v_latch_ix_lo_RC_CG_HIER_INST34/enable]  \
+  [get_pins reg_file__b2v_latch_iy_hi_RC_CG_HIER_INST35/enable]  \
+  [get_pins reg_file__b2v_latch_iy_lo_RC_CG_HIER_INST36/enable]  \
+  [get_pins reg_file__b2v_latch_pc_hi_RC_CG_HIER_INST37/enable]  \
+  [get_pins reg_file__b2v_latch_pc_lo_RC_CG_HIER_INST38/enable]  \
+  [get_pins reg_file__b2v_latch_sp_hi_RC_CG_HIER_INST39/enable]  \
+  [get_pins reg_file__b2v_latch_sp_lo_RC_CG_HIER_INST40/enable]  \
+  [get_pins reg_file__b2v_latch_wz_hi_RC_CG_HIER_INST41/enable]  \
+  [get_pins reg_file__b2v_latch_wz_lo_RC_CG_HIER_INST42/enable]  \
+  [get_pins sequencer__RC_CG_HIER_INST44/enable]  \
+  [get_pins address_latch__RC_CG_HIER_INST4/enable]  \
+  [get_pins RC_CG_DECLONE_HIER_INST/enable] ]
+set_clock_gating_check -setup 0.0 
+set_input_delay -clock [get_clocks CLK] -network_latency_included -add_delay -rise -min 0.0 [get_ports CLK]
+set_input_delay -clock [get_clocks CLK] -clock_fall -network_latency_included -add_delay -fall -min 0.0 [get_ports CLK]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports nWAIT]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports nINT]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports nNMI]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports nRESET]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports nBUSRQ]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports CLK]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[7]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[6]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[5]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[4]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[3]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[2]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[1]}]
+set_input_delay -clock [get_clocks CLK] -add_delay -max 0.2 [get_ports {D[0]}]
+set_input_transition -min 0.003 [get_ports nWAIT]
+set_input_transition -max 0.16 [get_ports nWAIT]
+set_input_transition -min 0.003 [get_ports nINT]
+set_input_transition -max 0.16 [get_ports nINT]
+set_input_transition -min 0.003 [get_ports nNMI]
+set_input_transition -max 0.16 [get_ports nNMI]
+set_input_transition -min 0.003 [get_ports nRESET]
+set_input_transition -max 0.16 [get_ports nRESET]
+set_input_transition -min 0.003 [get_ports nBUSRQ]
+set_input_transition -max 0.16 [get_ports nBUSRQ]
+set_input_transition -min 0.003 [get_ports CLK]
+set_input_transition -max 0.16 [get_ports CLK]
+set_input_transition -min 0.003 [get_ports {D[7]}]
+set_input_transition -max 0.16 [get_ports {D[7]}]
+set_input_transition -min 0.003 [get_ports {D[6]}]
+set_input_transition -max 0.16 [get_ports {D[6]}]
+set_input_transition -min 0.003 [get_ports {D[5]}]
+set_input_transition -max 0.16 [get_ports {D[5]}]
+set_input_transition -min 0.003 [get_ports {D[4]}]
+set_input_transition -max 0.16 [get_ports {D[4]}]
+set_input_transition -min 0.003 [get_ports {D[3]}]
+set_input_transition -max 0.16 [get_ports {D[3]}]
+set_input_transition -min 0.003 [get_ports {D[2]}]
+set_input_transition -max 0.16 [get_ports {D[2]}]
+set_input_transition -min 0.003 [get_ports {D[1]}]
+set_input_transition -max 0.16 [get_ports {D[1]}]
+set_input_transition -min 0.003 [get_ports {D[0]}]
+set_input_transition -max 0.16 [get_ports {D[0]}]
+set_wire_load_selection_group "4_metls_routing" -library "D_CELLS_MOSST_typ_1_80V_25C"
+set_dont_touch [get_cells alu_/g71]
+set_dont_touch [get_cells alu_/g69]
+set_dont_touch [get_cells alu_/g75]
+set_dont_touch [get_cells alu_/g72]
+set_dont_touch [get_cells alu_/g74]
+set_dont_touch [get_cells alu_/g68]
+set_dont_touch [get_cells alu_/g73]
+set_dont_touch [get_cells alu_/g70]
+set_dont_touch [get_cells sw2__g6]
+set_dont_touch [get_cells sw1__g12]
+set_dont_touch [get_cells sw2__g4]
+set_dont_touch [get_cells sw1__g13]
+set_dont_touch [get_cells sw2__g5]
+set_dont_touch [get_cells sw1__g11]
+set_dont_touch [get_cells sw2__g3]
+set_dont_touch [get_cells sw1__g10]
+set_dont_touch [get_cells sw1__g15]
+set_dont_touch [get_cells sw1__g16]
+set_dont_touch [get_cells sw1__g9]
+set_dont_touch [get_cells sw1__g5]
+set_dont_touch [get_cells reg_file__g156]
+set_dont_touch [get_cells reg_file__g161]
+set_dont_touch [get_cells reg_file__g163]
+set_dont_touch [get_cells reg_file__g162]
+set_dont_touch [get_cells reg_file__g159]
+set_dont_touch [get_cells reg_file__g160]
+set_dont_touch [get_cells reg_file__g158]
+set_dont_touch [get_cells reg_file__g157]
+set_dont_touch [get_cells sw2__g8]
+set_dont_touch [get_cells sw2__g1]
+set_dont_touch [get_cells sw2__g7]
+set_dont_touch [get_cells sw2__g2]
+set_dont_touch [get_cells reg_file__g177]
+set_dont_touch [get_cells reg_file__g172]
+set_dont_touch [get_cells reg_file__g179]
+set_dont_touch [get_cells reg_file__g178]
+set_dont_touch [get_cells reg_file__g175]
+set_dont_touch [get_cells reg_file__g176]
+set_dont_touch [get_cells reg_file__g174]
+set_dont_touch [get_cells reg_file__g173]
+set_dont_touch [get_cells reg_file__g137]
+set_dont_touch [get_cells reg_file__g132]
+set_dont_touch [get_cells reg_file__g139]
+set_dont_touch [get_cells reg_file__g116]
+set_dont_touch [get_cells reg_file__g121]
+set_dont_touch [get_cells reg_file__g123]
+set_dont_touch [get_cells reg_file__g138]
+set_dont_touch [get_cells reg_file__g122]
+set_dont_touch [get_cells reg_file__g119]
+set_dont_touch [get_cells reg_file__g120]
+set_dont_touch [get_cells reg_file__g135]
+set_dont_touch [get_cells reg_file__g136]
+set_dont_touch [get_cells reg_file__g118]
+set_dont_touch [get_cells reg_file__g134]
+set_dont_touch [get_cells reg_file__g133]
+set_dont_touch [get_cells reg_file__g117]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN322X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN322X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN331X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN331X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN332X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN332X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN333X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AN333X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AND7X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AND7X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AND8X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AND8X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELL10]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELL2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELL25]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELL5]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELLN10]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELLN2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELLN25]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ANTENNACELLN5]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO322X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO322X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO331X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO331X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO332X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO332X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO333X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/AO333X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX3]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX4]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX6]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCNX8]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX3]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX4]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX6]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LGCPX8]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX3]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX4]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX6]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCNX8]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX3]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX4]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX6]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSGCPX8]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX3]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX4]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX6]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCNX8]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX3]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX4]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX6]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/LSOGCPX8]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NA7X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NA7X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NA8X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NA8X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NO7X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NO7X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NO8X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/NO8X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA322X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA322X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA331X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA331X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA332X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA332X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA333X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OA333X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON322X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON322X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON331X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON331X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON332X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON332X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON333X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/ON333X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OR7X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OR7X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OR8X0]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/OR8X1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/SIGNALHOLD]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEED1]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEED2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEED5]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEED10]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEED25]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP2]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP5]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP5LP]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP7]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP7LP]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP10]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP10LP]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP15]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP15LP]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP25]
+set_dont_use [get_lib_cells D_CELLS_MOSST_typ_1_80V_25C/FEEDCAP25LP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR00DP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR00P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR01DP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR01P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR04DP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR04P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR10DP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR10P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR15DP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/APR15P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBC8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCA8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCHD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBCUD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBL8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLHD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBLUD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBS8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSHD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBSUD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBT8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTHD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BBTUD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOC8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCA8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOCGD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOL8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOLGD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOS8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOSGD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOT8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BOTGD8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT16P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT16SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT16SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT1P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT24P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT24SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT24SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT2P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT2SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT4P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT4SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT4SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT8P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT8SMP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/BT8SP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/GNDIPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/GNDOPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/GNDORPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/GNDRPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER01P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER02P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER05P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER10P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER20P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER40P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER50P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/FILLER60P]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ICAP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ICHDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ICP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ICUDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ILHDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ILP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ILUDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ISHDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ISP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ISUDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ITHDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ITP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/ITUDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JCAP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JCGDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JCP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JLGDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JLP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JSGDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JSP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JTGDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/JTP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/POWERCUTP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/VDDCPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/VDDIPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/VDDOPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/VDDORPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/VDDPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/VDDRPADP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/CORNERBP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/CORNERESDP]
+set_dont_use [get_lib_cells IO_CELLS_5V_MOS5ST_typ_1_80V_4_50V_25C/CORNERP]
