@@ -1,7 +1,7 @@
 #####################################################################
 #
 # Innovus setup file
-# Created by Genus(TM) Synthesis Solution on 04/04/2022 21:59:38
+# Created by Genus(TM) Synthesis Solution on 04/19/2022 20:02:13
 #
 # This file can only be run in Innovus Common UI mode.
 #
@@ -33,9 +33,4 @@ source innovus/z80_top_direct_n.mode
 # Import list of instances with subdesigns having boundary optimization disabled
 ################################################################################
 set_db opt_keep_ports innovus/z80_top_direct_n.boundary_opto.tcl 
-
-
-# Import list of size_only instances
-######################################
-set_db opt_size_only_file innovus/z80_top_direct_n.size_ok.tcl 
 
