@@ -1,0 +1,34 @@
+[04/19 20:48:32     0s] 
+[04/19 20:48:32     0s] Cadence Innovus(TM) Implementation System.
+[04/19 20:48:32     0s] Copyright 2015 Cadence Design Systems, Inc. All rights reserved worldwide.
+[04/19 20:48:32     0s] 
+[04/19 20:48:32     0s] Version:	v15.20-p005_1, built Wed Nov 11 11:16:39 PST 2015
+[04/19 20:48:32     0s] Options:	
+[04/19 20:48:32     0s] Date:		Tue Apr 19 20:48:32 2022
+[04/19 20:48:32     0s] Host:		pgmicro04 (x86_64 w/Linux 3.10.0-1160.42.2.el7.x86_64) (10cores*20cpus*Intel(R) Xeon(R) CPU E5-2650L v2 @ 1.70GHz 25600KB)
+[04/19 20:48:32     0s] OS:		CentOS Linux release 7.9.2009 (Core)
+[04/19 20:48:32     0s] 
+[04/19 20:48:32     0s] License:
+[04/19 20:48:32     0s] 		invs	Innovus Implementation System	15.2	checkout succeeded
+[04/19 20:48:32     0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[04/19 20:48:45    11s] @(#)CDS: Innovus v15.20-p005_1 (64bit) 11/11/2015 11:16 (Linux 2.6.18-194.el5)
+[04/19 20:48:45    11s] @(#)CDS: NanoRoute 15.20-p005_1 NR151028-1715/15_20-UB (database version 2.30, 298.6.1) {superthreading v1.26}
+[04/19 20:48:45    11s] @(#)CDS: AAE 15.20-p002 (64bit) 11/11/2015 (Linux 2.6.18-194.el5)
+[04/19 20:48:45    11s] @(#)CDS: CTE 15.20-p001_1 () Oct 29 2015 01:50:39 ( )
+[04/19 20:48:45    11s] @(#)CDS: SYNTECH 15.20-b002_1 () Oct 20 2015 02:35:29 ( )
+[04/19 20:48:45    11s] @(#)CDS: CPE v15.20-p002
+[04/19 20:48:45    11s] @(#)CDS: IQRC/TQRC 15.1.2-s269 (64bit) Mon Aug 24 18:22:18 PDT 2015 (Linux 2.6.18-194.el5)
+[04/19 20:48:45    11s] @(#)CDS: OA 22.50-p028 Thu Jul 23 14:59:57 2015
+[04/19 20:48:45    11s] @(#)CDS: SGN 10.10-p124 (19-Aug-2014) (64 bit executable)
+[04/19 20:48:45    11s] @(#)CDS: RCDB 11.6
+[04/19 20:48:45    11s] --- Running on pgmicro04 (x86_64 w/Linux 3.10.0-1160.42.2.el7.x86_64) (10cores*20cpus*Intel(R) Xeon(R) CPU E5-2650L v2 @ 1.70GHz 25600KB) ---
+[04/19 20:48:45    11s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_34240_pgmicro04_leonardo.augusto_js0Inf.
+
+[04/19 20:48:46    12s] **INFO (INTERRUPT): The current script will stop before next command.
+[04/19 20:48:46    12s] **INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+[04/19 20:48:46    12s] 
+[04/19 20:48:46    12s] **INFO:  MMMC transition support version v31-84 
+[04/19 20:48:46    12s] 
+[04/19 20:48:46    12s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[04/19 20:48:46    12s] <CMD> suppressMessage ENCEXT-2799
+[04/19 20:48:46    12s] Innovus terminated by user interrupt.
