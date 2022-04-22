@@ -13,14 +13,27 @@ place_design
 
 ##Place pins in the chip sides
 
-edit_pin -side Top -layer 4 -spread_type center -spacing 3 -pin {Bus2IP_Clk {Bus2IP_RdCE[0]} {Bus2IP_RdCE[1]} {Bus2IP_RdCE[2]} {Bus2IP_RdCE[3]} {Bus2IP_RdCE[4]} {Bus2IP_RdCE[5]} {Bus2IP_RdCE[6]} {Bus2IP_RdCE[7]} {Bus2IP_RdCE[8]} {Bus2IP_RdCE[9]} {Bus2IP_RdCE[10]} {Bus2IP_RdCE[11]} {Bus2IP_RdCE[12]} {Bus2IP_RdCE[13]} {Bus2IP_RdCE[14]}}
+#edit_pin -side Top -layer 4 -spread_type center -spacing 3 -pin {Bus2IP_Clk {Bus2IP_RdCE[0]} {Bus2IP_RdCE[1]} {Bus2IP_RdCE[2]} {Bus2IP_RdCE[3]} {Bus2IP_RdCE[4]} {Bus2IP_RdCE[5]} {Bus2IP_RdCE[6]} {Bus2IP_RdCE[7]} {Bus2IP_RdCE[8]} {Bus2IP_RdCE[9]} {Bus2IP_RdCE[10]} {Bus2IP_RdCE[11]} {Bus2IP_RdCE[12]} {Bus2IP_RdCE[13]} {Bus2IP_RdCE[14]}}
 
-edit_pin -side Left -layer 3 -spread_type center -spacing 3 -pin {{Bus2IP_Data[0]} {Bus2IP_Data[1]} {Bus2IP_Data[2]} {Bus2IP_Data[3]} {Bus2IP_Data[4]} {Bus2IP_Data[5]} {Bus2IP_Data[6]} {Bus2IP_Data[7]} Bus2IP_Reset}
+#edit_pin -side Left -layer 3 -spread_type center -spacing 3 -pin {{Bus2IP_Data[0]} {Bus2IP_Data[1]} {Bus2IP_Data[2]} {Bus2IP_Data[3]} {Bus2IP_Data[4]} {Bus2IP_Data[5]} {Bus2IP_Data[6]} {Bus2IP_Data[7]} Bus2IP_Reset}
 
-edit_pin -side Bottom -layer 4 -spread_type center -spacing 3 -pin {{Bus2IP_WrCE[0]} {Bus2IP_WrCE[1]} {Bus2IP_WrCE[2]} {Bus2IP_WrCE[3]} {Bus2IP_WrCE[4]} {Bus2IP_WrCE[5]} {Bus2IP_WrCE[6]} {Bus2IP_WrCE[7]} {Bus2IP_WrCE[8]} {Bus2IP_WrCE[9]} {Bus2IP_WrCE[10]} {Bus2IP_WrCE[11]} {Bus2IP_WrCE[12]} {Bus2IP_WrCE[13]} {Bus2IP_WrCE[14]}}
+#edit_pin -side Bottom -layer 4 -spread_type center -spacing 3 -pin {{Bus2IP_WrCE[0]} {Bus2IP_WrCE[1]} {Bus2IP_WrCE[2]} {Bus2IP_WrCE[3]} {Bus2IP_WrCE[4]} {Bus2IP_WrCE[5]} {Bus2IP_WrCE[6]} {Bus2IP_WrCE[7]} {Bus2IP_WrCE[8]} {Bus2IP_WrCE[9]} {Bus2IP_WrCE[10]} {Bus2IP_WrCE[11]} {Bus2IP_WrCE[12]} {Bus2IP_WrCE[13]} {Bus2IP_WrCE[14]}}
 
-edit_pin -side Right -layer 3 -spread_type center -spacing 3 -pin {{IP2Bus_Data[0]} {IP2Bus_Data[1]} {IP2Bus_Data[2]} {IP2Bus_Data[3]} {IP2Bus_Data[4]} {IP2Bus_Data[5]} {IP2Bus_Data[6]} {IP2Bus_Data[7]} user_int}
+#edit_pin -side Right -layer 3 -spread_type center -spacing 3 -pin {{IP2Bus_Data[0]} {IP2Bus_Data[1]} {IP2Bus_Data[2]} {IP2Bus_Data[3]} {IP2Bus_Data[4]} {IP2Bus_Data[5]} {IP2Bus_Data[6]} {IP2Bus_Data[7]} user_int}
 
-ccopt_design 
+#ccopt_design 
+# Pre-CTS opt
+opt_design -pre_cts
+
+time_design -pre_cts
+
+# CTS
+eval_legacy {setCTSMode -engine ck}
+#eval_legacy {clockDesign -genSpecOnly Clock.ctstch}
+eval_legacy {clockDesign -specFile Clock.ctstch -outDir clk_report}
+
+# Post-CTS opt
+opt_design -post_cts
 
 report_timing
+eval_legacy {timeDesign -postCTS}
