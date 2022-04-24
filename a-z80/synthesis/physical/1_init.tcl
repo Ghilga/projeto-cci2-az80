@@ -19,7 +19,7 @@ read_io_file iopads.io
 
 ##Generating square floorplan (1) with 80% of density (0.8) with 3um margins (3 3 3 3)
 #create_floorplan -site CORE -core_density_size 1 0.8 3 3 3 3
-create_floorplan -site core -core_density_size 1 0.8 3 3 3 3
+create_floorplan -site core -core_density_size 1 0.7 3 3 3 3
 
 ##fit screen
 gui_fit
